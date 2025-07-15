@@ -5009,5 +5009,26 @@
 			});
 		});
 	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Selecciona todas las celdas de las tablas
+			const cells = document.querySelectorAll("td");
+
+			cells.forEach(cell => {
+				const value = cell.innerText.trim();
+
+				// Elimina símbolos como % y comas para parseo seguro
+				const numericValue = parseFloat(value.replace(/[%,$]/g, ''));
+
+				if (!isNaN(numericValue)) {
+					if (numericValue > 0) {
+						cell.classList.add("positive");
+					} else if (numericValue < 0) {
+						cell.classList.add("negative");
+					}
+				}
+			});
+		});
+	</script>
 </body>
 </html>
